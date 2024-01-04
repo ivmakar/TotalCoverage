@@ -10,7 +10,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(System.getenv('SIGNING_KEY_FILE'))
+            storeFile file(System.getenv('SIGNING_KEY_FILE')?: "")
             storePassword RELEASE_STORE_PASSWORD
             keyPassword RELEASE_KEY_PASSWORD
             keyAlias RELEASE_KEY_ALIAS
