@@ -8,6 +8,15 @@ plugins {
 android {
     compileSdkVersion 31
 
+    signingConfigs {
+        release {
+            storeFile file(System.getenv('SIGNING_KEY_FILE'))
+            storePassword RELEASE_STORE_PASSWORD
+            keyPassword RELEASE_KEY_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+        }
+    }
+
     defaultConfig {
         applicationId "otus.demo.totalcoverage"
         minSdkVersion 23
@@ -22,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
